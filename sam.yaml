@@ -1,13 +1,13 @@
-AWSTemplateFormatVersion: '2020-05-31'
-Transform: AWS::Serverless-2020-05-31
-Description: AWS Serverless Jersey API - my.service::jersey-sample
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: AWS Serverless Jersey API - org.webservice.demo::Main
 Resources:
-  JerseySampleFunction:
+  JerseyDemoFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: org.webservice.demo.Main::handleRequest
       Runtime: java8
-      CodeUri: target/jersey-sample-1.0-SNAPSHOT.jar
+      CodeUri: build/libs/demo2-all.jar 
       MemorySize: 512
       Policies: AWSLambdaBasicExecutionRole
       Timeout: 15
@@ -16,11 +16,11 @@ Resources:
           Type: Api
           Properties:
             Path: /{proxy+}
-            Method: any
+            Method: any 
 
 Outputs:
   JerseySampleApi:
     Description: URL for application
-    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/json/ping'
+    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/test/'
     Export:
-      Name: JerseySampleApi
+      Name: demo
