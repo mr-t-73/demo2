@@ -21,32 +21,32 @@ $ gradle shadowJar
 
 ```
 $ aws cloudformation package --template-file sam.yaml --output-template-file output-sam.yaml --s3-bucket <bucketname> --profile <username><br/>
-Uploading to 01234567897abcdef0123456789  9027778 / 9027778.0  (100.00%)<br/>
-Successfully packaged artifacts and wrote output template to file output-sam.yaml.<br/>
-Execute the following command to deploy the packaged template<br/>
-aws cloudformation deploy --template-file /<somepath>/output-sam.yaml --stack-name <YOUR STACK NAME><br/>
+Uploading to 01234567897abcdef0123456789  9027778 / 9027778.0  (100.00%)
+Successfully packaged artifacts and wrote output template to file output-sam.yaml.
+Execute the following command to deploy the packaged template
+aws cloudformation deploy --template-file /<somepath>/output-sam.yaml --stack-name <YOUR STACK NAME>
 ```
 
 ```
-$ aws cloudformation deploy --template-file /<somepath>/output-sam.yaml --stack-name test --region <region_name> --capabilities CAPABILITY_IAM --profile <username><br/>
-Waiting for changeset to be created..<br/>
-Waiting for stack create/update to complete<br/>
-Successfully created/updated stack - test<br/>
+$ aws cloudformation deploy --template-file /<somepath>/output-sam.yaml --stack-name test --region <region_name> --capabilities CAPABILITY_IAM --profile <username>
+Waiting for changeset to be created..
+Waiting for stack create/update to complete
+Successfully created/updated stack - test
 ```
 
 ```
 $ aws cloudformation describe-stacks --region <region_name> --stack-name test --query 'Stacks[0].Outputs[*].{Service:OutputKey,Endpoint:OutputValue}' --profile <username><br/>
-[<br/>
-    {<br/>
-        "Service": "JerseySampleApi",<br/>
-        "Endpoint": "https://abcdef0123.execute-api.someregion.amazonaws.com/Prod/test/"<br/>
-    }<br/>
-]<br/>
+[
+    {
+        "Service": "JerseySampleApi",
+        "Endpoint": "https://abcdef0123.execute-api.someregion.amazonaws.com/Prod/test/"
+    }
+]
 ```
 
 ```
 ## Test the result:
 
-$ curl https://abcdef0123.execute-api.someregion.amazonaws.com/Prod/test/something<br/>
+$ curl https://abcdef0123.execute-api.someregion.amazonaws.com/Prod/test/something
 Returning something. It worked!
 ```
