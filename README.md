@@ -2,7 +2,7 @@
 
 This second demo takes our code from demo1, where we wrote a simple JAX-RS webservice in a Jersey framework  / Embedded Tomcat, replacing Tomcat with a JerseyLambdaContainerHandler. So, we still create a jersey ResourceConfig, but instead of "feeding" that to Tomcat, its provided to AWS using the getAwsProxyHandler static method: 
 
-```private static final JerseyLambdaContainerHandler<AwsProxyRequest, AwsProxyResponse> handler
+```private static final JerseyLambdaContainerHandler<AwsProxyRequest, AwsProxyResponse> handler<br/>
             = JerseyLambdaContainerHandler.getAwsProxyHandler(jerseyApplication);```
 
 
