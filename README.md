@@ -2,18 +2,22 @@
 
 This second demo takes our code from demo1, where we wrote a simple JAX-RS webservice in a Jersey framework  / Embedded Tomcat, replacing Tomcat with a JerseyLambdaContainerHandler. So, we still create a jersey ResourceConfig, but instead of "feeding" that to Tomcat, its provided to AWS using the getAwsProxyHandler static method: 
 
-```private static final JerseyLambdaContainerHandler<AwsProxyRequest, AwsProxyResponse> handler<br/>
-            = JerseyLambdaContainerHandler.getAwsProxyHandler(jerseyApplication);```
+```
+private static final JerseyLambdaContainerHandler<AwsProxyRequest, AwsProxyResponse> handler
+            = JerseyLambdaContainerHandler.getAwsProxyHandler(jerseyApplication);
+```
 
 
 
 ## Getting started
 
-```gradle clean```
+```
+gradle clean
 
-```gradle build```
+gradle build
 
-```gradle shadowJar```
+gradle shadowJar
+```
 
 ```$ aws cloudformation package --template-file sam.yaml --output-template-file output-sam.yaml --s3-bucket <bucketname> --profile <username><br/>
 Uploading to 01234567897abcdef0123456789  9027778 / 9027778.0  (100.00%)<br/>
